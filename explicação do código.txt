@@ -1,0 +1,430 @@
+1º inicio html
+
+ Corpo do site <body>
+Tem duas divisões principais:
+
+<div class="content">
+    <div class="esquerda">...</div>
+    <div class="direita">...</div>
+</div>
+Ou seja: metade da tela para a esquerda e metade para a direita.
+
+3. Parte Esquerda
+<div class="esquerda">
+    <header class="cabeçalho">...</header>
+    <main>...</main>
+</div>
+Cabeçalho:
+
+Mostra teu nome ("Stélvio Marques") como logo.
+
+Tem o menu de navegação: Biografia, Fotos, Contato.
+
+O menu de Contato abre uma seção escondida com:
+ WhatsApp
+
+Instagram
+
+X (antigo Twitter)
+
+Telegram
+
+<div id="contato" class="secao-cont bordas">
+    <a href="#" class="fechar">x</a>
+    <img src="imagens/what1.jpg" ...> <p><a href="https://contate.me/...">Whatsapp</a></p>
+    ...
+</div>
+Essa parte aparece quando clicas no botão "Contato".
+
+Main (parte principal):
+
+Um título "Oi eu sou:".
+
+Um link com teu nome que leva para a página bio.html.
+
+Um pequeno texto dizendo que tu és:
+
+Estudante de informática
+
+Programador
+
+Iniciante em administração de redes
+
+4. Parte Direita
+
+<div class="direita">
+    <header>
+        <div id="clock">00:00:00</div>
+    </header>
+    <script>...</script>
+Tem um relógio digital que mostra a hora atual, atualizando a cada segundo.
+
+A função atualizarClock pega a hora e formata para HH:MM:SS.
+
+Redes Sociais:
+
+
+<div class="social imgs">
+    <a href="..."><img src="imagens/what1.jpg" ...></a>
+    <a href="..."><img src="imagens/ig1.jpg" ...></a>
+    <a href="#"><img src="imagens/tel1.jpg" ...></a>
+</div>
+Ícones para WhatsApp, Instagram e Telegram, em forma de imagem clicável.
+
+5. Script para limpar o #contato da URL
+javascript
+Copiar
+Editar
+window.addEventListener("load",function() {
+    if(window.location.hash==="#contato"){
+        history.replaceState(null,null," ");       
+    }
+});
+Quando o site carrega, se o endereço do navegador tiver #contato, ele remove para deixar a URL limpa (sem bagunça).
+Quando a página termina de carregar,
+
+Ele olha se tem #contato na URL,
+
+Se tiver, ele remove automaticamente e deixa a URL limpa, tipo:
+https://www.stelviomarques.com/
+
+
+2º inicio css
+
+1. * (asterisco)
+Aplica para todos os elementos:
+
+Remove margens e paddings.
+
+box-sizing: border-box; → faz o tamanho dos elementos incluir bordas e preenchimentos (facilita a organização do layout).
+
+2. body, html
+Configura o corpo da página:
+
+Sem margem e padding.
+
+height: 100%; → corpo ocupa a tela inteira.
+
+Fonte padrão 'Times New Roman'.
+
+overflow-x: hidden; → impede a barra de rolagem horizontal.
+
+Layout Principal
+3. .content
+Área que divide a tela em dois lados:
+
+Usa flexbox para colocar o lado esquerdo e direito lado a lado.
+
+height: 100vh; → ocupa 100% da altura da tela.
+
+4. .esquerda
+Lado esquerdo da página:
+
+50% da largura.
+
+Fundo preto, texto branco.
+
+display: flex; flex-direction: column; → organiza elementos de cima para baixo.
+
+justify-content: space-between; → espaça o conteúdo igualmente.
+
+5. header
+Cabeçalho dentro do lado esquerdo:
+
+Organiza o logo e o menu (nav) verticalmente (flex-direction: column).
+
+6. .logo
+Logo (tipo "Stelvio Marques RGB"):
+
+Cor branca.
+
+Anima a cor mudando entre azul → vermelho → amarelo → azul (mudarCor).
+
+7. @keyframes mudarCor
+Animação para mudar a cor dos textos:
+
+Alterna entre azul escuro, vermelho e amarelo.
+
+8. nav ul e nav a
+Menu de navegação:
+
+Lista sem bolinhas (list-style: none).
+
+Links um do lado do outro (flex-direction: row).
+
+Links são brancos, sem sublinhado.
+
+9. main
+Área principal de texto:
+
+Organiza o conteúdo em coluna.
+
+Alinha os itens à esquerda.
+
+Textos e Efeitos
+10. .oi
+Saudação (tipo "Olá"):
+
+Fonte grande (50px).
+
+Cor cinza claro #bbbb.
+
+Margem ajustada para alinhar.
+
+11. .nome
+Teu nome destacado:
+
+Fonte gigante (100px).
+
+Negrito.
+
+Anima quando o mouse passa (hover):
+
+Aumenta de tamanho (transform: scale(1.1)).
+
+Brilha com efeito RGB (text-shadow e animation).
+
+12. .role
+Descrição de função (ex.: "Web Developer"):
+
+Fonte menor (20px).
+
+Posição ajustada para ficar abaixo do nome.
+
+13. .brilho
+Links que brilham ao clicar:
+
+Quando clicados (:active), ficam vermelhos e brilham.
+
+Área de Contato
+14. .secao-cont
+Caixa de contato escondida inicialmente:
+
+Fica fora da tela (left: -100%) e invisível (opacity: 0).
+
+Quando acessada (#contato:target), aparece deslizando.
+
+15. .bordas
+Caixa de borda animada:
+
+Borda vermelha que muda de cor usando cor.
+
+Fundo preto e brilho suave.
+
+16. .fechar
+Botão para fechar o contato:
+
+Fica no canto superior direito da caixa.
+
+Lado Direito
+17. .direita
+Metade direita:
+
+Fundo com imagem (img1.jpg) ocupando toda a área.
+
+18. .social
+Ícones de redes sociais:
+
+Caixinhas pretas com ícones brancos.
+
+Alinhados verticalmente do lado direito da tela.
+
+19. .icone
+Estilo dos ícones (ex.: Instagram, GitHub):
+
+Tamanho controlado (25px).
+
+20. .imgs
+Seção para imagens especiais:
+
+Borda vermelha animada.
+
+Fundo preto, texto branco.
+
+21. .nome1
+Estilo de texto nos links:
+
+Texto branco e sem sublinhado.
+
+22. #clock
+Relógio digital animado:
+
+Fonte grande (48px).
+
+Fundo preto, bordas arredondadas.
+
+Sombra colorida animada (rgbAnimation).
+
+23. @keyframes rgbAnimation
+Animação para o relógio:
+
+Sombra do texto vai mudando entre azul → vermelho → amarelo → azul novamente.
+
+Resumo geral
+Esse teu CSS cria um site dividido em dois lados:
+
+Esquerda: informações e navegação (menu, nome, função, link de contato).
+
+Direita: uma imagem bonita de fundo e ícones de redes sociais.
+
+Com efeitos animados de cores, brilho, hover e até relógio com animação! 🔥
+
+3º bio css
+
+1. body
+Define o estilo geral da página:
+
+margin: 0; → remove as margens do navegador.
+
+font-family: 'Times New Roman'... → define a fonte dos textos.
+
+background-color: #000000; → fundo preto.
+
+color: #ffffff; → textos brancos.
+
+line-height: 1.6; → espaçamento entre linhas mais agradável para leitura.
+
+2. .container
+É a caixa principal que centraliza todo o conteúdo:
+
+max-width: 800px; → largura máxima de 800px.
+
+margin: 50px auto; → 50px de margem em cima e embaixo e automático nas laterais (para centralizar).
+
+padding: 20px; → espaço interno de 20px.
+
+text-align: center; → todo o texto dentro fica centralizado.
+
+3. .header
+Parte superior do conteúdo (tipo um título/cabeçalho):
+
+margin-bottom: 30px; → espaço abaixo do header.
+
+4. .foto
+É a foto de perfil ou imagem:
+
+width e height: 150px; → tamanho quadrado da imagem.
+
+border-radius: 50%; → deixa a imagem redonda.
+
+object-fit: cover; → corta a imagem para caber perfeitamente dentro da bolinha.
+
+margin-bottom: 15px; → espaço abaixo da imagem.
+
+border: 3px solid #ffffff; → borda branca em volta da foto.
+
+animation: cor 4s infinite; → anima a borda mudando de cor para sempre (usando a animação cor).
+
+5. h1, h2, h3
+Títulos de diferentes níveis:
+
+h1 → título principal, grande e negrito.
+
+h2 → subtítulo, menor e normal.
+
+h3 → título para seções, alinhado à esquerda e com letras maiúsculas (text-transform: uppercase).
+
+6. .content
+Define que o conteúdo principal do site fique alinhado à esquerda.
+
+7. p
+Estilos dos parágrafos:
+
+margin: 10px 0; → espaço acima e abaixo.
+
+font-size: 1em; → tamanho padrão de texto.
+
+8. @keyframes cor
+Animação da borda da foto:
+
+Vai mudando a cor da borda de azul escuro → vermelho → amarelo → volta para azul escuro em 4 segundos.
+
+9. .home
+É o ícone de voltar ou home (tipo uma casinha no canto):
+
+height e width: 25px; → tamanho do ícone.
+
+float: right; → move para a direita.
+
+margin-right: 10px; → dá espaço da borda direita.
+
+margin-top: -30px; → sobe o ícone para ficar no topo.
+
+10. .link
+Links estilizados:
+
+text-decoration: none; → tira o sublinhado padrão dos links.
+
+animation: mudarCor 4s infinite; → o texto do link fica mudando de cor também.
+
+color: white; → cor inicial branca.
+
+11. @keyframes mudarCor
+Animação que muda a cor dos links ou textos especiais:
+
+cor vai de azul escuro → vermelho → amarelo → azul escuro novamente em 4 segundos.
+
+12. .logo
+Texto para o logo (por exemplo, teu nome "Stelvio Marques RGB"):
+
+color: white; → cor branca.
+
+text-align: left; → alinhado à esquerda.
+
+animation: mudarCor 4s infinite; → também fica mudando de cor como os links.
+
+margin: 0 5px; → pequeno espaço horizontal ao redor.
+
+4º fotos css
+📜 Explicação geral:
+1. body
+
+Fundo preto e letras brancas na página toda.
+
+2. .container
+
+Cria um layout lado a lado (com flex), com espaço (gap) entre os elementos.
+
+3. .container img
+
+As imagens dentro do container ficam com bordas arredondadas (10px).
+
+4. .slide e .slide img
+
+Área para imagens deslizantes.
+
+Quando tu passas o mouse em cima da imagem, ela cresce um pouco (transform: scale(1.1)).
+
+5. .intro
+
+Texto centralizado, grande (50px), usado tipo título.
+
+6. .logo
+
+Tua marca "Stélvio Marques" muda de cor automaticamente com uma animação (@keyframes mudarCor): azul → vermelho → amarelo → azul.
+
+7. .home
+
+Ícone de "home" (casinha), pequeno e posicionado no canto direito em cima.
+
+8. .galeria
+
+Um grid (grade) de 4 colunas para mostrar várias imagens bonitas organizadas.
+
+9. .galeria img:hover
+
+Quando tu passa o mouse sobre as imagens da galeria:
+
+Elas crescem (scale(1.1)),
+
+A borda da imagem muda de cor animadamente (azul → vermelho → amarelo → azul).
+
+
+
+
+
+
+
+
+
+
